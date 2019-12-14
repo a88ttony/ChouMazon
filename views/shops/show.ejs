@@ -1,0 +1,75 @@
+<%- include("../partials/header") %>
+    <div class="row">
+
+        <div class="col-md-9">
+            <div class="card">
+                <img src="<%= shops.image %>" class="card-img-top img-fix" alt="<%= shops.name%>">
+                <div class="card-body">
+                    <% if(currentUser && shops.author.id.equals(currentUser._id)){ %>
+                    <form class="delete-form" action="/shops/<%= shops._id%>/?_method=DELETE" method="POST">
+                        <button class="btn btn-danger btn-sm float-right ml-2"> Delete </button>
+                    </form>
+                    <a class="btn btn-warning btn-sm float-right" href="/shops/<%= shops._id %>/edit">Edit </a>
+
+                    <% } %>
+                    <!-- <p class="float-right">$<%= shops.price %></p>
+                    <h5 class="card-title"><%= shops.name%></h5>
+                    <p><em>Seller: <%= shops.author.username %></em></p> -->
+                    <hr>    
+                    <p class="card-text"><%= shops.description %></p>
+
+                </div>
+            </div>
+
+            <div class="card card-body bg-light">
+                <div class="text-right">
+                     <a class="btn btn-success btn-md mb-2" href="/shops/<%= shops._id %>/comments/new"> Ask Seller a Question</a>
+                </div>
+                <!-- <hr> -->
+                
+                <% shops.comments.forEach(function(comment){ %>
+                <div class="row">
+                        <div class = "col-md-12 mb-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="float-right">10 days ago</p>
+                                    <p class="card-title"><%= comment.author.username %></p>
+                                    <p class="card-text">
+                                        <%= comment.text %>
+                                    </p>
+                                </div>
+                            </div>
+                            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                <form class="delete-form" action="/shops/<%= shops._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                    <input type="submit" class="btn btn-danger btn-sm float-right mt-2 ml-2" value="Delete">
+                                </form>
+                                <a class="btn btn-warning btn-sm float-right mt-2" href="/shops/<%= shops._id %>/comments/<%= comment._id %>/edit">Edit </a>
+                            <% } %>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+        <div class="col-md-3 float-right">
+            <h4 class="font-weight-bold"><%= shops.name%></h4>
+            <p> <em>by <%= shops.author.username %></em> </p>
+            <h5 class="price">$<%= shops.price %></h5>
+            <hr>
+            <h6 class="smallfont"><strong>Author</strong>：<%= shops.writer %></h6> 
+            <h6 class="smallfont"><strong>Published by</strong>：<%= shops.publisher %></h6>
+            <h6 class="smallfont ISBN"><strong>ISBN/ISSN</strong>：<%= shops.isbn %></h6>
+
+                    <form action="/shops/<%= shops._id %>/comments" method="POST">
+            <a class="btn btn-warning btn mt-2 btn-lg btn-block" href="/billing">Buy Now</a>
+
+            <form action="/shops/<%= shops._id %>/comments" method="POST">
+                <button class="btn btn-warning btn mt-2 btn-lg btn-block"> Buy Now </button>
+            </form>
+            <form class="delete-form" action="/shops/<%= shops._id%>/?_method=DELETE" method="POST">
+                <button class="btn btn-warning btn mt-2 btn-lg btn-block"> Add to Cart </button>
+            </form>
+        </div>
+    </div>
+
+
+<%- include("../partials/footer") %>

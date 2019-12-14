@@ -1,0 +1,39 @@
+.img-thumbnail img{
+    object-fit: contain;
+    height: 300px
+}
+
+.img-thumbnail{
+    padding: 0;
+}
+
+.img-thumbnail .caption-full {
+    padding: 9px;
+}
+
+.delete-form {
+    display: inline;
+}
+
+.flex-wrap {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.img-fix {
+    object-fit: contain;
+    height: 500px;
+}
+
+.price {
+    color: rgb(167, 87, 87);
+    margin-bottom: 24px;
+}
+
+.smallfont{
+    font-size: 14px;
+}
+
+.ISBN{
+       margin-bottom: 48px; 
+}

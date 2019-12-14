@@ -1,0 +1,51 @@
+<%- include("../partials/header") %>
+
+    <p></p>
+    <header class="jumbotron"> 
+            <h1>This is <strong>Chou<em>Mazon!</em></strong></h1>
+            <p>Buy All Books you like!</p>
+            <hr class="my-4">
+            <h5>
+                <a class="btn btn-info btn-md" href="/shops/new">Sell your used books</a>
+            </h5>
+    </header>
+
+        <!-- <% shops.forEach(function(shops){ %>
+            <div class="row text-center" style="display: flex; flex-wrap: wrap;"> -->
+            <!-- mb means margin bottom -->
+            <!-- <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> 
+                    <div class="card">
+                        <img src="<%= shops.image %>" class="card-img-top" alt="<%= shops.name%>">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= shops.name%></h5>
+                            <a href="/shops/<%= shops._id %>" class="btn btn-primary">more information</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }); %>      -->
+            <div class="row" style="display: flex; flex-wrap: wrap;">
+                <% shops.forEach(function(shops){ %>
+                <div class="col-lg-3 col-sm-6 mb-4">
+                    <div class="text-center">
+                        <div class="img-thumbnail justify-content-center">
+                            <img src="<%= shops.image %>" class="img-fluid" alt="Responsive image">
+                            <hr>
+                            <div class="caption mt-2">
+                                <h4><%= shops.name%></h4>
+                            </div>
+                            <p>
+                                <a href="/shops/<%= shops._id %>" class="btn btn-sm btn-secondary">more information</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+
+    </div>
+
+    
+
+<%- include("../partials/footer") %>
+
