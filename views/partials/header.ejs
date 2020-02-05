@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="/stylesheets/main.css">
 
 </head>
-<body>
+<body style="background-color:rgb(245,245,245)"></bodystyle>
 
     <!-- navbar -->
-    <nav class="navbar navbar-expand-md navbar-light bg-light mb-4">
+    <nav class="navbar navbar-expand-md navbar-dark  mb-4" style="background-color: rgb(35, 48, 64);">
         <a class="navbar-brand" href="/">Chou<em>Mazon!</em></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,17 +26,17 @@
             <ul class="navbar-nav navbar-right">
                 <% if(!currentUser){ %>
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link" style="color: rgb(255,255,255)" href="/login">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/register">Sign Up</a>
+                    <a class="nav-link" style="color: rgb(255,255,255)" href="/register">Sign Up</a>
                 </li>
                 <% } else { %>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Hi, <%= currentUser.username%></a>
+                    <a class="nav-link" style="color: rgb(255,255,255)" href="#">Hi, <%= currentUser.username%></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/logout">Logout</a>
+                    <a class="nav-link" style="color: rgb(255,255,255)" href="/logout">Logout</a>
                 </li>
                 <% } %>
             </ul>

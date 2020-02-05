@@ -1,12 +1,12 @@
 <%- include("../partials/header") %>
 
     <p></p>
-    <header class="jumbotron"> 
+    <header class="jumbotron" style="background-color: rgb(225,228,231)"> 
             <h1>This is <strong>Chou<em>Mazon!</em></strong></h1>
-            <p>Buy All Books you like!</p>
+            <p><i>"There is more treasure in books than in all the pirate's loot on Treasure Island." – Walt Disney</i></p> 
             <hr class="my-4">
             <h5>
-                <a class="btn btn-info btn-md" href="/shops/new">Sell your used books</a>
+                <a class="btn btn-secondary btn-md" style="background-color: rgb(254,189,105)" href="/shops/new">Sell your used books</a>
             </h5>
     </header>
 
@@ -30,12 +30,16 @@
                     <div class="text-center">
                         <div class="img-thumbnail justify-content-center">
                             <img src="<%= shops.image %>" class="img-fluid" alt="Responsive image">
+                            
                             <hr>
                             <div class="caption mt-2">
                                 <h4><%= shops.name%></h4>
                             </div>
+                            <div class=" mt-2">
+                                <h6 style="color: rgb(204,28,56)"> $ <%= shops.price%></h6>
+                            </div>
                             <p>
-                                <a href="/shops/<%= shops._id %>" class="btn btn-sm btn-secondary">more information</a>
+                                <a href="/shops/<%= shops._id %>" class="btn btn-sm btn-secondary" >more information</a>
                             </p>
                         </div>
                     </div>

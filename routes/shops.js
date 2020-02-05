@@ -86,6 +86,14 @@ router.delete("/:id", middleware.checkShopOwnership, function (req, res) {
     });
 });                                                    
 
-
+router.get("/:id/billing", middleware.isLoggedIn, function (req, res) {
+    shopsdata.findById(req.params.id, function (err, foundshopsdata) {
+        if (err) {
+            res.redirect("/shops/" + req.params.id);
+        } else {
+            res.render("buy/show", { shops: foundshopsdata });
+        }  
+    });      
+});
 
 module.exports = router;

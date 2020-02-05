@@ -47,18 +47,17 @@ router.get("/logout", function (req, res) {
 });
 
 
-router.get("/billing", function (req, res) {
-    res.render("buy/show");
-});
 
-router.put("/billing/cart", middleware.isLoggedIn, function (req, res) {
-    User.findByIdAndUpdate(req.user._id, req.body.comment, function (err, updatedComment) {
-        if (err) {
-            res.redirect("back");
-        } else {
-            res.redirect("/shops/" + req.params.id);
-        }
-    })
-})
+
+// complete the CART !!!!!
+// router.put("/billing/cart", middleware.isLoggedIn, function (req, res) {
+//     User.findByIdAndUpdate(req.user._id, req.body.comment, function (err, updatedComment) {
+//         if (err) {
+//             res.redirect("back");
+//         } else {
+//             res.redirect("/shops/" + req.params.id);
+//         }
+//     })
+// })
 
 module.exports = router;

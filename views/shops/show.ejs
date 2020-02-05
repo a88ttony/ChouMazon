@@ -9,7 +9,7 @@
                     <form class="delete-form" action="/shops/<%= shops._id%>/?_method=DELETE" method="POST">
                         <button class="btn btn-danger btn-sm float-right ml-2"> Delete </button>
                     </form>
-                    <a class="btn btn-warning btn-sm float-right" href="/shops/<%= shops._id %>/edit">Edit </a>
+                    <a class="btn btn-warning btn-sm float-right" style="background-color: rgb(254,189,105)" href="/shops/<%= shops._id %>/edit">Edit </a>
 
                     <% } %>
                     <!-- <p class="float-right">$<%= shops.price %></p>
@@ -32,8 +32,8 @@
                         <div class = "col-md-12 mb-2">
                             <div class="card">
                                 <div class="card-body">
-                                    <p class="float-right">10 days ago</p>
-                                    <p class="card-title"><%= comment.author.username %></p>
+                                    <!-- <p class="float-right">10 days ago</p> -->
+                                    <p class="card-title"><strong><%= comment.author.username %>:</strong></p>
                                     <p class="card-text">
                                         <%= comment.text %>
                                     </p>
@@ -59,16 +59,17 @@
             <h6 class="smallfont"><strong>Published by</strong>：<%= shops.publisher %></h6>
             <h6 class="smallfont ISBN"><strong>ISBN/ISSN</strong>：<%= shops.isbn %></h6>
 
-                    <form action="/shops/<%= shops._id %>/comments" method="POST">
+            <!-- <form action="/shops/<%= shops._id %>/comments" method="POST">
             <a class="btn btn-warning btn mt-2 btn-lg btn-block" href="/billing">Buy Now</a>
+            </form> -->
 
-            <form action="/shops/<%= shops._id %>/comments" method="POST">
-                <button class="btn btn-warning btn mt-2 btn-lg btn-block"> Buy Now </button>
-            </form>
-            <form class="delete-form" action="/shops/<%= shops._id%>/?_method=DELETE" method="POST">
+            <form class="delete-form" action="/shops/<%= shops._id %>/billing" method="GET">
+                <button class="btn btn-warning btn-secondary mt-2 btn-lg btn-block" style="background-color: rgb(254,189,105)"> Buy Now </button>
+            <!-- </form>
+            <form class="delete-form" action="/billing" method="GET">
                 <button class="btn btn-warning btn mt-2 btn-lg btn-block"> Add to Cart </button>
-            </form>
-        </div>
+            </form> -->
+        </div> 
     </div>
 
 

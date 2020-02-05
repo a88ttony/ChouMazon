@@ -10,6 +10,7 @@ var LocalStrategy = require("passport-local");
 var User = require("./models/user");
 var methodOverride = require("method-override");
 var flash = require("connect-flash");
+require('dotenv').config()
 
 // require route
 var commentsRoutes = require("./routes/comments");
@@ -18,7 +19,7 @@ var indexRoutes = require("./routes/index");
 
 
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect("mongodb://localhost: 27017/yelp_shops", { useNewUrlParser: true });
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useCreateIndex:true });
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname +"/public"))
@@ -50,7 +51,8 @@ app.use("/shops/:id/comments", commentsRoutes);
 app.use("/shops", shopsRoutes);
 app.use("/", indexRoutes);
 
-app.listen(3000, function(){
-    console.log("the server started")
+var port = process.env.PORT;
+app.listen(port, function () {
+    console.log("Server Has Started!");
 });
 

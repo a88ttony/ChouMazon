@@ -37,3 +37,14 @@
 .ISBN{
        margin-bottom: 48px; 
 }
+
+.background {
+    color: rgb(0,164,180,.05);
+    margin-bottom: 24px;
+}
+
+
+.btn-secondary{
+    background-color: rgb(242,202,117);
+    color: rgb(0,0,0)
+}
