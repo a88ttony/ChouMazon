@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: choumazon
+  labels:
+    componet: choumazon
+spec:
+  containers:
+    - name: choumazon
+      image: a88ttony/choumazon
+      ports:
+        - name: liveness-port
+          containerPort: 3000
+      env:
+        - name: DATABASE_URL
+          value: mongodb+srv://chou:a88ttony@cluster0-e7iqk.mongodb.net/test?retryWrites=true&w=majority
+        - name: PORT
+          value: "3000"
+      livenessProbe:
+        httpGet:
+          path: /shops
+          port: liveness-port
+        initialDelaySeconds: 5
+        periodSeconds: 10
+      readinessProbe:
+        httpGet:
+          path: /shops
+          port: liveness-port
+        initialDelaySeconds: 15
+        periodSeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: choumazon
+spec:
+  selector:
+    componet: choumazon
+  type: NodePort
+  ports:
+    - port: 3001
+      targetPort: 3000
+      nodePort: 30390
