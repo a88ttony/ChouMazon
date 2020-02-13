@@ -13,7 +13,7 @@ spec:
           containerPort: 3000
       env:
         - name: DATABASE_URL
-          value: mongodb+srv://chou:a88ttony@cluster0-e7iqk.mongodb.net/test?retryWrites=true&w=majority
+          value: mongodb://mongo:27017
         - name: PORT
           value: "3000"
       livenessProbe:
