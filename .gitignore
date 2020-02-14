@@ -107,4 +107,4 @@ dist
 .vscode-test
 
 # MAC OS
-**/.DS_Store
+.DS_Store
