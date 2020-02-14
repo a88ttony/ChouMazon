@@ -22,7 +22,7 @@ router.post("/register", function (req, res) {
             return res.redirect("/register");
         }
         passport.authenticate("local")(req, res, function () {
-            req.flash("success", "Welcome to Choumazon" + user.username);
+            req.flash("success", "Hi "+user.username + ", welcome to Choumazon!");
             res.redirect("/shops");
         })
     })
@@ -36,7 +36,8 @@ router.get("/login", function (req, res) {
 router.post("/login", passport.authenticate("local",
     {
         successRedirect: "/shops",
-        failureRedirect: "/login"
+        failureRedirect: "/login",
+        failureFlash: true
     }), function (req, res) {
     });
 // logout
