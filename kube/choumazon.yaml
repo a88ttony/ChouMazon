@@ -20,9 +20,15 @@ spec:
               containerPort: 3000
           env:
             - name: DATABASE_URL
-              value: mongodb://mongo:27017
+              valueFrom:
+                secretKeyRef:
+                  name: mysecret
+                  key: DATABASE_URL
             - name: PORT
-              value: "3000"
+              valueFrom:
+                secretKeyRef:
+                  name: mysecret
+                  key: PORT
           livenessProbe:
             httpGet:
               path: /health

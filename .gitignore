@@ -108,3 +108,6 @@ dist
 
 # MAC OS
 .DS_Store
+
+# K8S SECRET
+kube/secret.yaml
