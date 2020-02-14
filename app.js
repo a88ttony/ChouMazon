@@ -16,6 +16,7 @@ require('dotenv').config()
 var commentsRoutes = require("./routes/comments");
 var shopsRoutes = require("./routes/shops");
 var indexRoutes = require("./routes/index");
+var healthRoutes = require("./routes/health.js");
 
 
 mongoose.set('useUnifiedTopology', true);
@@ -50,6 +51,7 @@ app.use(function(req, res, next){
 app.use("/shops/:id/comments", commentsRoutes);
 app.use("/shops", shopsRoutes);
 app.use("/", indexRoutes);
+app.use("/health", healthRoutes);
 
 var port = process.env.PORT;
 app.listen(port, function () {

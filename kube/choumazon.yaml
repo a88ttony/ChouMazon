@@ -25,13 +25,13 @@ spec:
               value: "3000"
           livenessProbe:
             httpGet:
-              path: /shops
+              path: /health
               port: liveness-port
             initialDelaySeconds: 5
             periodSeconds: 10
           readinessProbe:
             httpGet:
-              path: /shops
+              path: /health
               port: liveness-port
             initialDelaySeconds: 15
             periodSeconds: 20
