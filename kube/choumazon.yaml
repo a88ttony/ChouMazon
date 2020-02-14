@@ -1,33 +1,40 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: choumazon
-  labels:
-    componet: choumazon
 spec:
-  containers:
-    - name: choumazon
-      image: a88ttony/choumazon
-      ports:
-        - name: liveness-port
-          containerPort: 3000
-      env:
-        - name: DATABASE_URL
-          value: mongodb://mongo:27017
-        - name: PORT
-          value: "3000"
-      livenessProbe:
-        httpGet:
-          path: /shops
-          port: liveness-port
-        initialDelaySeconds: 5
-        periodSeconds: 10
-      readinessProbe:
-        httpGet:
-          path: /shops
-          port: liveness-port
-        initialDelaySeconds: 15
-        periodSeconds: 20
+  replicas: 1
+  selector:
+    matchLabels:
+      app: choumazon
+  template:
+    metadata:
+      labels:
+        app: choumazon
+    spec:
+      containers:
+        - name: choumazon
+          image: a88ttony/choumazon
+          ports:
+            - name: liveness-port
+              containerPort: 3000
+          env:
+            - name: DATABASE_URL
+              value: mongodb://mongo:27017
+            - name: PORT
+              value: "3000"
+          livenessProbe:
+            httpGet:
+              path: /shops
+              port: liveness-port
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /shops
+              port: liveness-port
+            initialDelaySeconds: 15
+            periodSeconds: 20
 ---
 apiVersion: v1
 kind: Service
@@ -35,7 +42,7 @@ metadata:
   name: choumazon
 spec:
   selector:
-    componet: choumazon
+    app: choumazon
   type: NodePort
   ports:
     - port: 3001
