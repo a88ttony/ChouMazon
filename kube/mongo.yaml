@@ -25,6 +25,7 @@ kind: Deployment
 metadata:
   name: mongo
 spec:
+  replicas: 0
   selector:
     matchLabels:
       app: mongo
